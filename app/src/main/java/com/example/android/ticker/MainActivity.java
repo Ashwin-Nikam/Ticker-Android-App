@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity implements MenuAdapter.MenuA
 
     private RecyclerView mRecyclerView;
     private MenuAdapter mMenuAdapter;
-    public String menuItems[] = {"Pending", "Done"};
+    public String menuItems[] = {"New Task", "To-Do's", "Completed"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +30,15 @@ public class MainActivity extends AppCompatActivity implements MenuAdapter.MenuA
     @Override
     public void onClick(String menuItem) {
         if(menuItem.equals(menuItems[0])) {
+            Intent newTaskIntent = new Intent(this, NewTaskActivity.class);
+            startActivity(newTaskIntent);
+        } else if(menuItem.equals(menuItems[1])) {
             Intent pendingIntent = new Intent(this, PendingActivity.class);
             startActivity(pendingIntent);
-        } else {
+        } else if(menuItem.equals(menuItems[2])) {
             Intent doneIntent = new Intent(this, DoneActivity.class);
             startActivity(doneIntent);
         }
-
     }
 
 

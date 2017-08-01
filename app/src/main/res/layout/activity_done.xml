@@ -13,8 +13,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="42dp"
+        android:textSize="25dp"
         android:id="@+id/tv_done"
-        android:text="This is a Done Intent"/>
+        android:text="This is a Done Intent"
+        android:fontFamily="monospace"
+        style="@style/TextAppearance.AppCompat.Title"/>
 
 </RelativeLayout>
