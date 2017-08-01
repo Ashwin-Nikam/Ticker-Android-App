@@ -5,13 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements MenuAdapter.MenuAdapterOnClickHandler {
 
     private RecyclerView mRecyclerView;
     private MenuAdapter mMenuAdapter;
-    public String menuItems[] = {"New Task", "To-Do's", "Completed"};
+    public String menuItems[] = {"To-Do's", "Completed"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +31,16 @@ public class MainActivity extends AppCompatActivity implements MenuAdapter.MenuA
     @Override
     public void onClick(String menuItem) {
         if(menuItem.equals(menuItems[0])) {
-            Intent newTaskIntent = new Intent(this, NewTaskActivity.class);
-            startActivity(newTaskIntent);
-        } else if(menuItem.equals(menuItems[1])) {
             Intent pendingIntent = new Intent(this, PendingActivity.class);
             startActivity(pendingIntent);
-        } else if(menuItem.equals(menuItems[2])) {
+        } else if(menuItem.equals(menuItems[1])) {
             Intent doneIntent = new Intent(this, DoneActivity.class);
             startActivity(doneIntent);
         }
     }
 
-
+    public void fab_click(View view) {
+        Intent newTaskIntent = new Intent(this, NewTaskActivity.class);
+        startActivity(newTaskIntent);
+    }
 }
