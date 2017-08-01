@@ -1,21 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_new_task"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.android.ticker.NewTaskActivity">
 
+
     <TextView
+        android:text="Name of task"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_new_task_title"
+        style="@style/MyCustomStyle"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="12dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="12dp" />
+
+    <EditText
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Enter task"
+        android:ems="10"
+        android:id="@+id/et_enter_task"
+        style="@style/MyCustomStyle"
+        android:textSize="25dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_new_task_title"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_new_task_title" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_priority"
+        style="@style/MyCustomStyle"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/et_enter_task"
+        app:layout_constraintLeft_toLeftOf="@+id/et_enter_task" />
+
+    <RadioButton
+        android:text="RadioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:fontFamily="monospace"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:text="New Task not implemented yet"/>
+        android:id="@+id/radioButton"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_priority"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_priority"
+        android:layout_marginStart="120dp"
+        android:layout_marginLeft="120dp" />
 
-</RelativeLayout>
+    <RadioButton
+        android:text="RadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioButton2"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="@+id/radioButton" />
+
+    <RadioButton
+        android:text="RadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioButton3"
+        app:layout_constraintLeft_toLeftOf="@+id/radioButton2"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton3"
+        app:layout_constraintLeft_toLeftOf="@+id/radioButton3"
+        app:layout_constraintRight_toRightOf="@+id/radioButton3" />
+
+</android.support.constraint.ConstraintLayout>
