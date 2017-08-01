@@ -1,5 +1,6 @@
 package com.example.android.ticker;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,7 +29,14 @@ public class MainActivity extends AppCompatActivity implements MenuAdapter.MenuA
 
     @Override
     public void onClick(String menuItem) {
-        Toast.makeText(this, menuItem, Toast.LENGTH_SHORT).show();
+        if(menuItem.equals(menuItems[0])) {
+            Intent pendingIntent = new Intent(this, PendingActivity.class);
+            startActivity(pendingIntent);
+        } else {
+            Intent doneIntent = new Intent(this, DoneActivity.class);
+            startActivity(doneIntent);
+        }
+
     }
 
 
