@@ -95,7 +95,6 @@
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         android:layout_marginStart="76dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="76dp"
-        android:onClick="create_task"/>
+        android:layout_marginLeft="76dp" />
 
 </android.support.constraint.ConstraintLayout>
