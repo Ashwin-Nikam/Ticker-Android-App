@@ -16,14 +16,12 @@ public class TickerContract {
     public static final class TickerEntry implements BaseColumns {
 
         //First we created the main content uri
-
         public static final Uri CONTENT_URI = BASE_CONTENT_URI
                 .buildUpon()
                 .appendPath(PATH_TASKS)
                 .build();
 
         //Then we declared the table name, and name of all the columns
-
         public static final String TABLE_NAME = "tasks";
         public static final String COLUMN_TASK_NAME = "task";
         public static final String COLUMN_PRIORITY = "priority";

@@ -53,7 +53,6 @@ public class TickerProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
-        Log.i("Insert","Entered");
         mDb = mTickerHelper.getWritableDatabase();
         mDb.insert(TickerContract.TickerEntry.TABLE_NAME,
                     null,
@@ -80,6 +79,7 @@ public class TickerProvider extends ContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues contentValues, String s, String[] strings) {
+
         return 0;
     }
 

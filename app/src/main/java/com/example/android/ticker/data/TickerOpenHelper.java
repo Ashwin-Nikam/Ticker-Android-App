@@ -11,7 +11,7 @@ import android.util.Log;
 
 public class TickerOpenHelper extends SQLiteOpenHelper {
 
-    private static final int DB_VERSION = 6;
+    private static final int DB_VERSION = 7;
     private static final String DB_NAME = "tasks.db";
 
 
@@ -24,15 +24,15 @@ public class TickerOpenHelper extends SQLiteOpenHelper {
         final String CREATE_STATEMENT = "CREATE TABLE " +
                 TickerContract.TickerEntry.TABLE_NAME + " (" +
                 TickerContract.TickerEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                TickerContract.TickerEntry.COLUMN_TASK_NAME + " TEXT,"+
-                TickerContract.TickerEntry.COLUMN_PRIORITY + " TEXT" +");";
+                TickerContract.TickerEntry.COLUMN_TASK_NAME + " TEXT NOT NULL,"+
+                TickerContract.TickerEntry.COLUMN_PRIORITY + " TEXT NOT NULL" +");";
 
         sqLiteDatabase.execSQL(CREATE_STATEMENT);
-        Log.i("DBHelper", "Created table successfully");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ TickerContract.TickerEntry.TABLE_NAME);
+        onCreate(sqLiteDatabase);
     }
 }

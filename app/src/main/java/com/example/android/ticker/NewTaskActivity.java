@@ -1,6 +1,5 @@
 package com.example.android.ticker;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,9 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.example.android.ticker.data.TickerContract;
 
@@ -73,6 +70,11 @@ public class NewTaskActivity extends AppCompatActivity {
         }
         mRadioGroup.clearCheck();
         context.getContentResolver().insert(TickerContract.TickerEntry.CONTENT_URI, contentValues);
+        checkNumInserted();
+        deleteAll();
+    }
+
+    public static void checkNumInserted() {
         String[] projection = {TickerContract.TickerEntry._ID};
         Cursor cursor = context.getContentResolver().query(TickerContract.TickerEntry.CONTENT_URI,
                 projection,
@@ -80,6 +82,19 @@ public class NewTaskActivity extends AppCompatActivity {
                 null,
                 null);
         Log.i("Cursor count", Integer.toString(cursor.getCount()));
+    }
+
+    public static void deleteAll() {
+        context.getContentResolver().delete(TickerContract.TickerEntry.CONTENT_URI,
+                null,
+                null);
+        String[] projection = {TickerContract.TickerEntry._ID};
+        Cursor cursor = context.getContentResolver().query(TickerContract.TickerEntry.CONTENT_URI,
+                projection,
+                null,
+                null,
+                null);
+        Log.i("After delete count", Integer.toString(cursor.getCount()));
     }
 
 }
