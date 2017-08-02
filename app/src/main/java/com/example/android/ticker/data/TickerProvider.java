@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
  * Created by ashwin on 8/1/17.
@@ -32,6 +33,7 @@ public class TickerProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
+        Log.i("Content provider", "Entered insert");
         return null;
     }
 
