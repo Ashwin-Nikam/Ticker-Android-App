@@ -24,8 +24,8 @@ public class TickerContract {
 
         //Then we declared the table name, and name of all the columns
 
-        public static final String TABLE_NAME = "task";
-        public static final String COLUMN_TASK_NAME = "task_name";
+        public static final String TABLE_NAME = "tasks";
+        public static final String COLUMN_TASK_NAME = "task";
         public static final String COLUMN_PRIORITY = "priority";
 
     }

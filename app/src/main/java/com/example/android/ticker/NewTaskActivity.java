@@ -3,6 +3,7 @@ package com.example.android.ticker;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +24,8 @@ public class NewTaskActivity extends AppCompatActivity {
 
     public static Context context;
 
+    public static final String keyTask = TickerContract.TickerEntry.COLUMN_TASK_NAME;
+    public static final String keyPriority = TickerContract.TickerEntry.COLUMN_PRIORITY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +50,6 @@ public class NewTaskActivity extends AppCompatActivity {
         String taskDescription = String.valueOf(mTaskDescription.getText());
         mTaskDescription.setText("");
 
-        String keyTask = "Task";
-        String keyPriority = "Priority";
-
         ContentValues contentValues = new ContentValues();
 
         switch (mRadioGroup.getCheckedRadioButtonId()) {
@@ -73,6 +73,13 @@ public class NewTaskActivity extends AppCompatActivity {
         }
         mRadioGroup.clearCheck();
         context.getContentResolver().insert(TickerContract.TickerEntry.CONTENT_URI, contentValues);
+        String[] projection = {TickerContract.TickerEntry._ID};
+        Cursor cursor = context.getContentResolver().query(TickerContract.TickerEntry.CONTENT_URI,
+                projection,
+                null,
+                null,
+                null);
+        Log.i("Cursor count", Integer.toString(cursor.getCount()));
     }
 
 }
