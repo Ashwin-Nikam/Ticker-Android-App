@@ -71,7 +71,7 @@ public class NewTaskActivity extends AppCompatActivity {
         mRadioGroup.clearCheck();
         context.getContentResolver().insert(TickerContract.TickerEntry.CONTENT_URI, contentValues);
         checkNumInserted();
-        deleteAll();
+        //deleteAll();
     }
 
     public static void checkNumInserted() {
@@ -82,6 +82,7 @@ public class NewTaskActivity extends AppCompatActivity {
                 null,
                 null);
         Log.i("Cursor count", Integer.toString(cursor.getCount()));
+        cursor.close();
     }
 
     public static void deleteAll() {
