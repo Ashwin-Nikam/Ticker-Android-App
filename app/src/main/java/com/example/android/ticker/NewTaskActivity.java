@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -81,7 +80,6 @@ public class NewTaskActivity extends AppCompatActivity {
                 null,
                 null,
                 null);
-        Log.i("Cursor count", Integer.toString(cursor.getCount()));
         cursor.close();
     }
 
@@ -89,13 +87,6 @@ public class NewTaskActivity extends AppCompatActivity {
         context.getContentResolver().delete(TickerContract.TickerEntry.CONTENT_URI,
                 null,
                 null);
-        String[] projection = {TickerContract.TickerEntry._ID};
-        Cursor cursor = context.getContentResolver().query(TickerContract.TickerEntry.CONTENT_URI,
-                projection,
-                null,
-                null,
-                null);
-        Log.i("After delete count", Integer.toString(cursor.getCount()));
     }
 
 }

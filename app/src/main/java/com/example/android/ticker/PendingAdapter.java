@@ -2,13 +2,13 @@ package com.example.android.ticker;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.support.annotation.IntegerRes;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.ticker.data.TickerContract;
 
@@ -43,7 +43,7 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.PendingV
     public void onBindViewHolder(PendingViewHolder holder, int position) {
         String task = mCursor.getString(mCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_TASK_NAME));
         String priority = mCursor.getString(mCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_PRIORITY));
-        holder.taskTextView.setText(task+" ("+priority+")");
+        holder.taskTextView.setText(task+" | "+priority);
         mCursor.moveToNext();
     }
 
