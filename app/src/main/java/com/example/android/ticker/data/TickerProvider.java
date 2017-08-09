@@ -65,6 +65,7 @@ public class TickerProvider extends ContentProvider {
     public int delete(Uri uri, String s, String[] strings) {
         mDb = mTickerHelper.getWritableDatabase();
         int numRowsDeleted;
+        Log.i("TAG", "Entered delete for "+s);
         if(s == null)
             s = "1";
 

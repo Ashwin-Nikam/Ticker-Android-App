@@ -44,13 +44,13 @@ public class PendingActivity extends AppCompatActivity {
 
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-            Toast.makeText(getBaseContext(), "Task completed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Task deleted", Toast.LENGTH_SHORT).show();
             mPendingTextView = (TextView) viewHolder.itemView.findViewById(R.id.tv_pending_task);
             String completeTask = mPendingTextView.getText().toString();
             String task = completeTask.split(" ")[0];
-            Log.i("TAG", task);
-            //getContentResolver().delete(TickerContract.TickerEntry.CONTENT_URI,
-            //        TickerContract.TickerEntry.COLUMN_TASK_NAME+"="+task, null);
+            int numDeleted = getContentResolver().delete(TickerContract.TickerEntry.CONTENT_URI,
+                    TickerContract.TickerEntry.COLUMN_TASK_NAME+" = '"+task+"'", null);
+            Log.i("Deleted rows", Integer.toString(numDeleted));
         }
     };
 
