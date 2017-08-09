@@ -33,7 +33,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     @Override
     public MenuAdapter.MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         mContext = parent.getContext();
-        View view = LayoutInflater.from(mContext).inflate(R.layout.pending_list_task, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.menu_list_item, parent, false);
         MenuAdapter.MenuViewHolder viewHolder = new MenuAdapter.MenuViewHolder(view);
         return viewHolder;
     }
@@ -57,7 +57,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
         public MenuViewHolder(View itemView) {
             super(itemView);
-            taskTextView = (TextView) itemView.findViewById(R.id.tv_pending_task);
+            taskTextView = (TextView) itemView.findViewById(R.id.tv_menu_item);
         }
     }
 

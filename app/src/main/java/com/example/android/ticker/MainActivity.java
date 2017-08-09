@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
             Toast.makeText(getBaseContext(), "Task deleted", Toast.LENGTH_SHORT).show();
-            mPendingTextView = (TextView) viewHolder.itemView.findViewById(R.id.tv_pending_task);
+            mPendingTextView = (TextView) viewHolder.itemView.findViewById(R.id.tv_menu_item);
             String completeTask = mPendingTextView.getText().toString();
             String task = completeTask.split("-")[0];
             Log.i("TASK", task);

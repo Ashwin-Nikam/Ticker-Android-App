@@ -16,9 +16,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PendingActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".DoneActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".NewTaskActivity"
