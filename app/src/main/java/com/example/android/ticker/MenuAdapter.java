@@ -1,6 +1,7 @@
 package com.example.android.ticker;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,66 +9,56 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.android.ticker.data.TickerContract;
+
 /**
  * Created by ashwin on 8/1/17.
  */
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder>{
 
-    private static String[] menuItems;
-    MenuAdapterOnClickHandler mClickHandler;
+    private Context mContext;
+    private Cursor mCursor;
 
-    public interface MenuAdapterOnClickHandler {
-        void onClick(String menuItem);
-    }
-
-    public MenuAdapter(MenuAdapterOnClickHandler onClickHandler) {
-        mClickHandler = onClickHandler;
+    public MenuAdapter(Context context) {
+        mContext = context;
+        mCursor = mContext.getContentResolver().query(TickerContract.TickerEntry.CONTENT_URI,
+                null,
+                null,
+                null,
+                null);
+        mCursor.moveToFirst();
     }
 
     @Override
-    public MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        int layoutId = R.layout.menu_list_item;
-        View view = LayoutInflater.from(context).inflate(layoutId, parent, false);
-        MenuViewHolder viewHolder = new MenuViewHolder(view);
+    public MenuAdapter.MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        mContext = parent.getContext();
+        View view = LayoutInflater.from(mContext).inflate(R.layout.pending_list_task, parent, false);
+        MenuAdapter.MenuViewHolder viewHolder = new MenuAdapter.MenuViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(MenuViewHolder holder, int position) {
-        String menuItem = menuItems[position];
-        holder.listItemMenuView.setText(menuItem);
+    public void onBindViewHolder(MenuAdapter.MenuViewHolder holder, int position) {
+        String task = mCursor.getString(mCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_TASK_NAME));
+        String priority = mCursor.getString(mCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_PRIORITY));
+        holder.taskTextView.setText(task+"-"+priority);
+        mCursor.moveToNext();
     }
 
     @Override
     public int getItemCount() {
-        if(menuItems == null)
-            return 0;
-        else
-            return menuItems.length;
+        return mCursor.getCount();
     }
 
-    class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class MenuViewHolder extends RecyclerView.ViewHolder {
 
-        TextView listItemMenuView;
+        TextView taskTextView;
 
-        public MenuViewHolder (View itemView) {
+        public MenuViewHolder(View itemView) {
             super(itemView);
-            listItemMenuView = (TextView) itemView.findViewById(R.id.tv_menu_item);
-            itemView.setOnClickListener(this);
+            taskTextView = (TextView) itemView.findViewById(R.id.tv_pending_task);
         }
-
-        @Override
-        public void onClick(View view) {
-            int adapterPosition = getAdapterPosition();
-            String menuItem = menuItems[adapterPosition];
-            mClickHandler.onClick(menuItem);
-        }
-    }
-
-    public static void setMenuItems(String[] items) {
-        menuItems = items;
     }
 
 }

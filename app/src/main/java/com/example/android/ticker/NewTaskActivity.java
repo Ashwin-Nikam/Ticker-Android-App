@@ -2,6 +2,7 @@ package com.example.android.ticker;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.android.ticker.data.TickerContract;
 
@@ -37,13 +39,28 @@ public class NewTaskActivity extends AppCompatActivity {
         mCreateTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createTask();
+                createTask(getBaseContext());
+                Intent backIntent = new Intent(NewTaskActivity.this, MainActivity.class);
+                startActivity(backIntent);
             }
         });
     }
 
-    public static void createTask() {
+    public static void createTask(Context context) {
         String taskDescription = String.valueOf(mTaskDescription.getText());
+
+        //Checks if the task description has been entered
+        if(taskDescription.equals("")) {
+            Toast.makeText(context, "Please enter task description", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //Checks if the priority is checked
+        if(mRadioGroup.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(context, "Please select a priority", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         mTaskDescription.setText("");
 
         ContentValues contentValues = new ContentValues();
@@ -80,6 +97,7 @@ public class NewTaskActivity extends AppCompatActivity {
                 null,
                 null);
         cursor.close();
+        Toast.makeText(context, "Task created", Toast.LENGTH_SHORT).show();
     }
 
 }
