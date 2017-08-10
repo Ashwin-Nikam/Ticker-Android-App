@@ -15,9 +15,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".DoneActivity"
-            android:parentActivityName=".MainActivity" />
         <activity android:name=".NewTaskActivity"
             android:parentActivityName=".MainActivity"></activity>
         <provider

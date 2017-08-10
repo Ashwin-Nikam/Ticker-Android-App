@@ -39,8 +39,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(newTaskIntent);
     }
 
-    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT
-            | ItemTouchHelper.RIGHT) {
+    ItemTouchHelper.SimpleCallback simpleCallback =
+            new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT
+                    | ItemTouchHelper.RIGHT) {
 
         TextView mPendingTextView;
 
