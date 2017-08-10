@@ -19,6 +19,7 @@ public class NewTaskActivity extends AppCompatActivity {
     public static RadioGroup mRadioGroup;
     public static EditText mTaskDescription;
     public static Button mCreateTaskButton;
+    public static boolean errorFlag = false;
 
     public static Context context;
 
@@ -40,8 +41,12 @@ public class NewTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 createTask(getBaseContext());
-                Intent backIntent = new Intent(NewTaskActivity.this, MainActivity.class);
-                startActivity(backIntent);
+                if(errorFlag == false) {
+                    Intent backIntent = new Intent(NewTaskActivity.this, MainActivity.class);
+                    startActivity(backIntent);
+                } else {
+                    errorFlag = false;
+                }
             }
         });
     }
@@ -52,12 +57,14 @@ public class NewTaskActivity extends AppCompatActivity {
         //Checks if the task description has been entered
         if(taskDescription.equals("")) {
             Toast.makeText(context, "Please enter task description", Toast.LENGTH_SHORT).show();
+            errorFlag = true;
             return;
         }
 
         //Checks if the priority is checked
         if(mRadioGroup.getCheckedRadioButtonId() == -1) {
             Toast.makeText(context, "Please select a priority", Toast.LENGTH_SHORT).show();
+            errorFlag = true;
             return;
         }
 
