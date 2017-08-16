@@ -75,17 +75,17 @@ public class NewTaskActivity extends AppCompatActivity {
         switch (mRadioGroup.getCheckedRadioButtonId()) {
             case R.id.rb_high:
                 contentValues.put(keyTask, taskDescription);
-                contentValues.put(keyPriority, "High");
+                contentValues.put(keyPriority, 1);
                 break;
 
             case R.id.rb_medium:
                 contentValues.put(keyTask, taskDescription);
-                contentValues.put(keyPriority, "Medium");
+                contentValues.put(keyPriority, 2);
                 break;
 
             case R.id.rb_low:
                 contentValues.put(keyTask, taskDescription);
-                contentValues.put(keyPriority, "Low");
+                contentValues.put(keyPriority, 3);
                 break;
 
             default:

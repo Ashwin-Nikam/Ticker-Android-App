@@ -37,8 +37,22 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     public void onBindViewHolder(MenuAdapter.MenuViewHolder holder, int position) {
         mCursor.moveToPosition(position);
         String task = mCursor.getString(mCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_TASK_NAME));
-        String priority = mCursor.getString(mCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_PRIORITY));
-        holder.taskTextView.setText(task+"-"+priority);
+        int priority = mCursor.getInt(mCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_PRIORITY));
+        String stringPriority = null;
+        switch (priority) {
+            case 1:
+                stringPriority = "High";
+                break;
+            case 2:
+                stringPriority = "Medium";
+                break;
+            case 3:
+                stringPriority = "Low";
+                break;
+            default:
+                break;
+        }
+        holder.taskTextView.setText(task+"-"+stringPriority);
     }
 
     @Override
@@ -47,7 +61,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                 null,
                 null,
                 null,
-                null);
+                TickerContract.TickerEntry.COLUMN_PRIORITY);
         return mCursor.getCount();
     }
 
@@ -57,7 +71,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
         public MenuViewHolder(View itemView) {
             super(itemView);
-            taskTextView = (TextView) itemView.findViewById(R.id.tv_menu_item);
+            taskTextView = (TextView)
+                    itemView.findViewById(R.id.tv_menu_item);
         }
     }
 

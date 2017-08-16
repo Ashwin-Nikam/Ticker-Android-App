@@ -25,7 +25,7 @@ public class TickerOpenHelper extends SQLiteOpenHelper {
                 TickerContract.TickerEntry.TABLE_NAME + " (" +
                 TickerContract.TickerEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 TickerContract.TickerEntry.COLUMN_TASK_NAME + " TEXT NOT NULL,"+
-                TickerContract.TickerEntry.COLUMN_PRIORITY + " TEXT NOT NULL" +");";
+                TickerContract.TickerEntry.COLUMN_PRIORITY + " INTEGER NOT NULL" +");";
 
         sqLiteDatabase.execSQL(CREATE_STATEMENT);
     }
