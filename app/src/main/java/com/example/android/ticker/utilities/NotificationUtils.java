@@ -40,6 +40,7 @@ public class NotificationUtils {
                 .setSmallIcon(R.drawable.ic_plus)
                 .setContentText("This is the content")
                 .setDefaults(Notification.DEFAULT_VIBRATE)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText("This is the content"))
                 .setContentIntent(createPendingIntent(context))
                 .setAutoCancel(true);
 
