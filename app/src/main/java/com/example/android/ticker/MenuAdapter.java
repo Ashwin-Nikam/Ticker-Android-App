@@ -27,7 +27,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
                 null,
                 null,
                 null);
-        mCursor.moveToFirst();
     }
 
     @Override
@@ -40,10 +39,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     @Override
     public void onBindViewHolder(MenuAdapter.MenuViewHolder holder, int position) {
+        mCursor.moveToPosition(position);
         String task = mCursor.getString(mCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_TASK_NAME));
         String priority = mCursor.getString(mCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_PRIORITY));
         holder.taskTextView.setText(task+"-"+priority);
-        mCursor.moveToNext();
     }
 
     @Override

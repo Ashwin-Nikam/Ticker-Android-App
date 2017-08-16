@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
 
-        //This is a sample comment
-
     }
 
     public void fab_click(View view) {
