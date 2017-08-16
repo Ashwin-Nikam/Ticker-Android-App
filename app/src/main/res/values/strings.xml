@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Ticker</string>
+
+    <string name="high_priority">High</string>
+    <string name="medium_priority">Medium</string>
+    <string name="low_priority">Low</string>
+
 </resources>

@@ -41,13 +41,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         String stringPriority = null;
         switch (priority) {
             case 1:
-                stringPriority = "High";
+                stringPriority = mContext.getString(R.string.high_priority);
                 break;
             case 2:
-                stringPriority = "Medium";
+                stringPriority = mContext.getString(R.string.medium_priority);
                 break;
             case 3:
-                stringPriority = "Low";
+                stringPriority = mContext.getString(R.string.low_priority);
                 break;
             default:
                 break;

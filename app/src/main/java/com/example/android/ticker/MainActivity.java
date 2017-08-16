@@ -75,4 +75,5 @@ public class MainActivity extends AppCompatActivity {
             mMenuAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
         }
     };
+
 }

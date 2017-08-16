@@ -59,7 +59,7 @@
         android:layout_marginLeft="136dp">
 
         <RadioButton
-            android:text="High"
+            android:text="@string/high_priority"
             android:layout_marginTop="0dp"
             android:background="#F44336"
             android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
             android:id="@+id/rb_high" />
 
         <RadioButton
-            android:text="Medium"
+            android:text="@string/medium_priority"
             android:background="#FFC107"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
             />
 
         <RadioButton
-            android:text="Low"
+            android:text="@string/low_priority"
             android:layout_marginTop="16dp"
             android:background="#00C853"
             android:layout_width="wrap_content"
