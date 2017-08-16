@@ -71,8 +71,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
         public MenuViewHolder(View itemView) {
             super(itemView);
-            taskTextView = (TextView)
-                    itemView.findViewById(R.id.tv_menu_item);
+            taskTextView = itemView.findViewById(R.id.tv_menu_item);
         }
     }
 

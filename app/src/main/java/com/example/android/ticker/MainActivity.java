@@ -53,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
             Toast.makeText(getBaseContext(), "Task deleted", Toast.LENGTH_SHORT).show();
-            mPendingTextView = (TextView) viewHolder.itemView.findViewById(R.id.tv_menu_item);
+            mPendingTextView = viewHolder.itemView.findViewById(R.id.tv_menu_item);
             String completeTask = mPendingTextView.getText().toString();
             String task = completeTask.split("-")[0];
-            int numDeleted = getContentResolver().delete(TickerContract.TickerEntry.CONTENT_URI,
+            getContentResolver().delete(TickerContract.TickerEntry.CONTENT_URI,
                     TickerContract.TickerEntry.COLUMN_TASK_NAME + " = '" + task + "'", null);
             mMenuAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
         }
