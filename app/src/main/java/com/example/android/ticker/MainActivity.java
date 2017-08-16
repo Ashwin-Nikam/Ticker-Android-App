@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.ticker.data.TickerContract;
+import com.example.android.ticker.utilities.NotificationUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     -----------------------------------------
      */
 
-    public void fab_click(View view) {
+    public void startNewTaskActivity(View view) {
         Intent newTaskIntent = new Intent(this, NewTaskActivity.class);
         startActivity(newTaskIntent);
     }
@@ -76,4 +77,8 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+
+    public void notificationTest(View view) {
+        NotificationUtils.remindUserAboutTask(this);
+    }
 }
