@@ -7,6 +7,12 @@ import android.provider.BaseColumns;
  * Created by ashwin on 8/1/17.
  */
 
+/*
+---------------------------------
+Basic contract class for storing all the important variables for the database.
+---------------------------------
+ */
+
 public class TickerContract {
 
     public static final String CONTENT_AUTHORITY = "com.example.android.ticker";

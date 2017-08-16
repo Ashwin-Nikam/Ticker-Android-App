@@ -34,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*
+    -----------------------------------------
+    NewTaskActivity started when FloatingActionButton is clicked.
+    -----------------------------------------
+     */
+
     public void fab_click(View view) {
         Intent newTaskIntent = new Intent(this, NewTaskActivity.class);
         startActivity(newTaskIntent);
@@ -49,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
         public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
             return false;
         }
+
+        /*
+        --------------------------------------------------
+        Code to delete the swiped task from content provider
+        After the task is deleted the adapter calls the notifyItemRemoved method in order to reload the
+        Recycler view.
+        ----------------------------------------------------
+        */
 
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {

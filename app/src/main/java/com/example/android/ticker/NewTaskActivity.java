@@ -41,7 +41,7 @@ public class NewTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 createTask(getBaseContext());
-                if(errorFlag == false) {
+                if(errorFlag == false) { //errorFlag used to check if all fields are filled properly
                     Intent backIntent = new Intent(NewTaskActivity.this, MainActivity.class);
                     startActivity(backIntent);
                 } else {
@@ -93,18 +93,6 @@ public class NewTaskActivity extends AppCompatActivity {
         }
         mRadioGroup.clearCheck();
         context.getContentResolver().insert(TickerContract.TickerEntry.CONTENT_URI, contentValues);
-        checkNumInserted();
-    }
-
-    public static void checkNumInserted() {
-        String[] projection = {TickerContract.TickerEntry._ID};
-        Cursor cursor = context.getContentResolver().query(TickerContract.TickerEntry.CONTENT_URI,
-                projection,
-                null,
-                null,
-                null);
-        cursor.close();
-        Toast.makeText(context, "Task created", Toast.LENGTH_SHORT).show();
     }
 
 }
