@@ -2,6 +2,7 @@ package com.example.android.ticker;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.support.annotation.IntegerRes;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,11 +23,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     public MenuAdapter(Context context) {
         mContext = context;
-        mCursor = mContext.getContentResolver().query(TickerContract.TickerEntry.CONTENT_URI,
-                null,
-                null,
-                null,
-                null);
     }
 
     @Override
@@ -47,6 +43,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     @Override
     public int getItemCount() {
+        mCursor = mContext.getContentResolver().query(TickerContract.TickerEntry.CONTENT_URI,
+                null,
+                null,
+                null,
+                null);
         return mCursor.getCount();
     }
 

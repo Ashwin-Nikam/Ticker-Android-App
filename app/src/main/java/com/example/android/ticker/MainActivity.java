@@ -56,10 +56,9 @@ public class MainActivity extends AppCompatActivity {
             mPendingTextView = (TextView) viewHolder.itemView.findViewById(R.id.tv_menu_item);
             String completeTask = mPendingTextView.getText().toString();
             String task = completeTask.split("-")[0];
-            Log.i("TASK", task);
             int numDeleted = getContentResolver().delete(TickerContract.TickerEntry.CONTENT_URI,
                     TickerContract.TickerEntry.COLUMN_TASK_NAME + " = '" + task + "'", null);
-            Log.i("Deleted rows", Integer.toString(numDeleted));
+            mMenuAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
         }
     };
 }
