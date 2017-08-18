@@ -32,14 +32,14 @@ public class NotificationUtils {
         return pendingIntent;
     }
 
-    public static void remindUserAboutTask(Context context) {
+    public static void remindUserAboutTask(Context context, String task) {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 .setColor(ContextCompat.getColor(context, R.color.colorPrimary))
-                .setContentTitle("Title")
+                .setContentTitle("You have pending tasks")
                 .setSmallIcon(R.drawable.ic_plus)
-                .setContentText("This is the content")
+                .setContentText(task)
                 .setDefaults(Notification.DEFAULT_VIBRATE)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText("This is the content"))
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(task))
                 .setContentIntent(createPendingIntent(context))
                 .setAutoCancel(true);
 
