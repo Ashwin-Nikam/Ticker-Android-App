@@ -96,9 +96,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
     public void notificationTest(View view) {
-        sCursor.moveToFirst();
-        String task = sCursor.getString(sCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_TASK_NAME));
-        NotificationUtils.remindUserAboutTask(this, task);
+        if(sCursor.getCount() != 0) {
+            sCursor.moveToFirst();
+            String task = sCursor.getString(sCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_TASK_NAME));
+            NotificationUtils.remindUserAboutTask(this, task);
+        } else
+            return;
     }
 
     /*
