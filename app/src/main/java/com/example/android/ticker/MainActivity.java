@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private MenuAdapter mMenuAdapter;
 
     private static final int LOADER_ID = 7;
+    private int mPosition = RecyclerView.NO_POSITION;
 
     public static final String[] MAIN_TASK_PROJECTION = {
             TickerContract.TickerEntry.COLUMN_TASK_NAME,
@@ -113,12 +114,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        
+        mMenuAdapter.swapCursor(data);
+        if(mPosition == RecyclerView.NO_POSITION)
+            mPosition = 0;
+        mRecyclerView.smoothScrollToPosition(mPosition);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        mMenuAdapter.swapCursor(null);
     }
 
     //----------------------------------------------------------------------------------------------

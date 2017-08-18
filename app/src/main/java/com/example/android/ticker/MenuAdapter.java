@@ -75,4 +75,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         }
     }
 
+    public void swapCursor(Cursor newCursor) {
+        mCursor = newCursor;
+        notifyDataSetChanged();
+    }
+
 }
