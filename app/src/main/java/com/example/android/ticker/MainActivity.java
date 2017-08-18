@@ -1,6 +1,10 @@
 package com.example.android.ticker;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,10 +18,17 @@ import android.widget.Toast;
 import com.example.android.ticker.data.TickerContract;
 import com.example.android.ticker.utilities.NotificationUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
     private RecyclerView mRecyclerView;
     private MenuAdapter mMenuAdapter;
+
+    private static final int LOADER_ID = 7;
+
+    public static final String[] MAIN_TASK_PROJECTION = {
+            TickerContract.TickerEntry.COLUMN_TASK_NAME,
+            TickerContract.TickerEntry.COLUMN_PRIORITY
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,4 +92,35 @@ public class MainActivity extends AppCompatActivity {
     public void notificationTest(View view) {
         NotificationUtils.remindUserAboutTask(this);
     }
+
+    //----------------------------------------------------------------------------------------------
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+
+        switch (id) {
+            case LOADER_ID:
+                return new CursorLoader(this,
+                        TickerContract.TickerEntry.CONTENT_URI,
+                        MAIN_TASK_PROJECTION,
+                        null,
+                        null,
+                        TickerContract.TickerEntry.COLUMN_PRIORITY);
+            default:
+                throw new RuntimeException("Loader not implemented "+id);
+        }
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+    }
+
+    //----------------------------------------------------------------------------------------------
+
 }
