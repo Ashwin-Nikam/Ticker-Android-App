@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
@@ -19,16 +20,18 @@ import com.example.android.ticker.R;
 
 public class NotificationUtils {
 
-    private static final int PENDING_INTENT_ID = 007;
     private static final int NOTIFICATION_ID = 777;
 
 //    This method is used for creating a pending intent which is going to be used
 //    by the notification manager to launch the MainActivity when clicked.
 
     public static PendingIntent createPendingIntent(Context context) {
+
         Intent intentToStartActivity = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getService(context,
-                PENDING_INTENT_ID, intentToStartActivity, PendingIntent.FLAG_UPDATE_CURRENT);
+        TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(context);
+        taskStackBuilder.addNextIntentWithParentStack(intentToStartActivity);
+        PendingIntent pendingIntent = taskStackBuilder.getPendingIntent(0,
+                PendingIntent.FLAG_UPDATE_CURRENT);
         return pendingIntent;
     }
 
@@ -36,7 +39,7 @@ public class NotificationUtils {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 .setColor(ContextCompat.getColor(context, R.color.colorPrimary))
                 .setContentTitle("You have pending tasks")
-                .setSmallIcon(R.drawable.ic_plus)
+                .setSmallIcon(R.drawable.ic_priority)
                 .setContentText(task)
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(task))

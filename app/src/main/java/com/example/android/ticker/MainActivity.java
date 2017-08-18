@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     public void notificationTest(View view) {
         if(sCursor.getCount() != 0) {
-            sCursor.moveToFirst();
+            sCursor.moveToFirst(); //moveToFirst as we want to display first task in RecyclerView in Notification
             String task = sCursor.getString(sCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_TASK_NAME));
             NotificationUtils.remindUserAboutTask(this, task);
         } else
