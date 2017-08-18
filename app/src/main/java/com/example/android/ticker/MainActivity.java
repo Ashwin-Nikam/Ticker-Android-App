@@ -98,7 +98,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         NotificationUtils.remindUserAboutTask(this);
     }
 
-    //----------------------------------------------------------------------------------------------
+    /*
+        --------------------------------------------------
+        Implemented cursor-loader
+        1. onCreate returns a new CursorLoader when provided with a
+        content_uri, projection and a sort order.
+        2. onLoadFinished swaps the cursor in MenuAdapter so the MenuAdapter gets
+        cursor containing the data and it then populates the RecyclerView.
+        ----------------------------------------------------
+        */
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
