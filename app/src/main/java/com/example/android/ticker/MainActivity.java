@@ -41,9 +41,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mRecyclerView.setLayoutManager(layoutManager);
         mMenuAdapter = new MenuAdapter(this);
         mRecyclerView.setAdapter(mMenuAdapter);
+        mRecyclerView.setHasFixedSize(true);
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
+
+        getSupportLoaderManager().initLoader(LOADER_ID,
+                null, this);
 
     }
 

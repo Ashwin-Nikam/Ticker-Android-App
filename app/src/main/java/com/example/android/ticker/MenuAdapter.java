@@ -58,10 +58,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     @Override
     public int getItemCount() {
         mCursor = mContext.getContentResolver().query(TickerContract.TickerEntry.CONTENT_URI,
-                null,
-                null,
-                null,
-                TickerContract.TickerEntry.COLUMN_PRIORITY);
+                    null,
+                    null,
+                    null,
+                    TickerContract.TickerEntry.COLUMN_PRIORITY);
         return mCursor.getCount();
     }
 
