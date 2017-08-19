@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private RecyclerView mRecyclerView;
     private MenuAdapter mMenuAdapter;
-    private Cursor sCursor;
 
     private static final int LOADER_ID = 7;
     private int mPosition = RecyclerView.NO_POSITION;
@@ -97,16 +96,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
     };
 
-
-    public void notificationTest(View view) {
-        if(sCursor.getCount() != 0) {
-            sCursor.moveToFirst(); //moveToFirst as we want to display first task in RecyclerView in Notification
-            String task = sCursor.getString(sCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_TASK_NAME));
-            NotificationUtils.remindUserAboutTask(this, task);
-        } else
-            return;
-    }
-
     /*
         --------------------------------------------------
         Implemented cursor-loader
@@ -135,7 +124,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        sCursor = data; //This swapping is done for creating notifications
         mMenuAdapter.swapCursor(data); //This swapping is done for populating the RecyclerView
         if(mPosition == RecyclerView.NO_POSITION)
             mPosition = 0;

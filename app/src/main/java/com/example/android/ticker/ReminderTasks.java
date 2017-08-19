@@ -19,7 +19,7 @@ public class ReminderTasks {
     }
 
     private static void issueTaskReminder(Context context) {
-        NotificationUtils.remindUserAboutTask(context, "Sample");
+        NotificationUtils.remindUserAboutTask(context);
     }
 
 }

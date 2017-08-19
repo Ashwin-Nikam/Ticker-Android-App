@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
@@ -13,6 +14,7 @@ import android.util.Log;
 
 import com.example.android.ticker.MainActivity;
 import com.example.android.ticker.R;
+import com.example.android.ticker.data.TickerContract;
 
 /**
  * Created by ashwin on 8/16/17.
@@ -35,7 +37,9 @@ public class NotificationUtils {
         return pendingIntent;
     }
 
-    public static void remindUserAboutTask(Context context, String task) {
+    public static void remindUserAboutTask(Context context) {
+        String task = getLatestTask(context);
+        if(task.equals("")) return;
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 .setColor(ContextCompat.getColor(context, R.color.colorPrimary))
                 .setContentTitle("You have pending tasks")
@@ -54,6 +58,21 @@ public class NotificationUtils {
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build());
+    }
+
+    public static String getLatestTask(Context context) {
+        Cursor cursor = context.getContentResolver()
+                .query(TickerContract.TickerEntry.CONTENT_URI,
+                        null,
+                        null,
+                        null,
+                        TickerContract.TickerEntry.COLUMN_PRIORITY);
+        cursor.moveToFirst();
+        if(cursor.getCount() != 0) {
+            String task = cursor.getString(cursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_TASK_NAME));
+            return task;
+        } else
+            return "";
     }
 
 }
