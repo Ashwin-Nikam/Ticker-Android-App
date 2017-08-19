@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.android.ticker.data.TickerContract;
 import com.example.android.ticker.utilities.NotificationUtils;
+import com.example.android.ticker.utilities.ReminderUtilities;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         getSupportLoaderManager().initLoader(LOADER_ID,
                 null, this);
+
+        ReminderUtilities.scheduleTaskReminder(this);
 
     }
 
