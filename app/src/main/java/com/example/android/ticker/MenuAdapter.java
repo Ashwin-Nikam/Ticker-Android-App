@@ -2,12 +2,15 @@ package com.example.android.ticker;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.IntegerRes;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.ticker.data.TickerContract;
@@ -38,21 +41,24 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         mCursor.moveToPosition(position);
         String task = mCursor.getString(mCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_TASK_NAME));
         int priority = mCursor.getInt(mCursor.getColumnIndex(TickerContract.TickerEntry.COLUMN_PRIORITY));
-        String stringPriority = null;
+        GradientDrawable gradientDrawable = (GradientDrawable)holder.priorityView.getDrawable();
         switch (priority) {
             case 1:
-                stringPriority = mContext.getString(R.string.high_priority);
+                int highColor = mContext.getResources().getColor(R.color.high_priority_color);
+                gradientDrawable.setColor(highColor);
                 break;
             case 2:
-                stringPriority = mContext.getString(R.string.medium_priority);
+                int mediumColor = mContext.getResources().getColor(R.color.medium_priority_color);
+                gradientDrawable.setColor(mediumColor);
                 break;
             case 3:
-                stringPriority = mContext.getString(R.string.low_priority);
+                int lowColor = mContext.getResources().getColor(R.color.low_priority_color);
+                gradientDrawable.setColor(lowColor);
                 break;
             default:
                 break;
         }
-        holder.taskTextView.setText(task+"-"+stringPriority);
+        holder.taskTextView.setText(task);
     }
 
     @Override
@@ -66,10 +72,12 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     class MenuViewHolder extends RecyclerView.ViewHolder {
 
         TextView taskTextView;
+        ImageView  priorityView;
 
         public MenuViewHolder(View itemView) {
             super(itemView);
             taskTextView = itemView.findViewById(R.id.tv_menu_item);
+            priorityView = itemView.findViewById(R.id.priorityView);
         }
     }
 

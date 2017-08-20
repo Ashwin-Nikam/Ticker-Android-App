@@ -29,7 +29,7 @@
         android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="@string/hint_enter_task"
+        android:hint="Enter task"
         android:ems="10"
         android:id="@+id/et_enter_task"
         style="@style/MyCustomStyle"
@@ -62,7 +62,7 @@
         <RadioButton
             android:text="@string/high_priority"
             android:layout_marginTop="0dp"
-            android:background="#F44336"
+            android:background="@color/high_priority_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rb_high"
@@ -70,7 +70,7 @@
 
         <RadioButton
             android:text="@string/medium_priority"
-            android:background="#FFC107"
+            android:background="@color/medium_priority_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rb_medium"
@@ -80,7 +80,7 @@
         <RadioButton
             android:text="@string/low_priority"
             android:layout_marginTop="16dp"
-            android:background="#00C853"
+            android:background="@color/low_priority_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rb_low"

@@ -11,7 +11,7 @@
 
         <TextView
             android:paddingTop="16dp"
-            android:layout_width="wrap_content"
+            android:layout_width="275dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             style="@style/TextAppearance.AppCompat.Title"
@@ -19,11 +19,12 @@
             android:textSize="21sp"
             android:paddingLeft="15dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="HI"
-            android:visibility="invisible"/>
+        <ImageView
+            android:id="@+id/priorityView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/view_shape"/>
 
     </LinearLayout>
 

@@ -3,4 +3,12 @@
     <color name="colorPrimary">#26A69A</color>
     <color name="colorPrimaryDark">#004D40</color>
     <color name="colorAccent">#FF6D00</color>
+
+    <color name="high_priority_color">#F44336</color>
+    <color name="medium_priority_color">#FFC107</color>
+    <color name="low_priority_color">#00C853</color>
+
+    <color name="black_color">#000</color>
+    <color name="white_color">#FFF</color>
+
 </resources>
