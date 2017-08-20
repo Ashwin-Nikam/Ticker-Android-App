@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private RecyclerView mRecyclerView;
     private MenuAdapter mMenuAdapter;
+    private TextView mNoTasksTextView;
 
     private static final int LOADER_ID = 7;
     private int mPosition = RecyclerView.NO_POSITION;
@@ -37,7 +38,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mNoTasksTextView = (TextView) findViewById(R.id.noTasks_textView);
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_menu);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mMenuAdapter = new MenuAdapter(this);
@@ -124,10 +127,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        mMenuAdapter.swapCursor(data); //This swapping is done for populating the RecyclerView
-        if(mPosition == RecyclerView.NO_POSITION)
-            mPosition = 0;
-        mRecyclerView.smoothScrollToPosition(mPosition);
+        int numberOfTasks = data.getCount();
+        if(numberOfTasks > 0) {
+            mNoTasksTextView.setVisibility(View.INVISIBLE);
+            mRecyclerView.setVisibility(View.VISIBLE);
+            mMenuAdapter.swapCursor(data); //This swapping is done for populating the RecyclerView
+            if(mPosition == RecyclerView.NO_POSITION)
+                mPosition = 0;
+            mRecyclerView.smoothScrollToPosition(mPosition);
+        } else {
+            mRecyclerView.setVisibility(View.INVISIBLE);
+            mNoTasksTextView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

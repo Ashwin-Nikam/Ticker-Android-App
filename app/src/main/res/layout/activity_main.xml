@@ -13,6 +13,15 @@
         android:layout_height="match_parent"
         android:id="@+id/rv_menu" />
 
+    <TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:textSize="21sp"
+        android:id="@+id/noTasks_textView"
+        android:text="@string/no_task_string" />
+
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
