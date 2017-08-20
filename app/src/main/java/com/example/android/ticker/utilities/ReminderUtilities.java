@@ -3,7 +3,6 @@ package com.example.android.ticker.utilities;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-
 import com.example.android.ticker.TaskReminderFirebaseJobService;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
 import com.firebase.jobdispatcher.GooglePlayDriver;

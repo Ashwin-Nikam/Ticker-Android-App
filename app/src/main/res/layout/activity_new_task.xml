@@ -63,7 +63,8 @@
             android:background="#F44336"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/rb_high" />
+            android:id="@+id/rb_high"
+            android:paddingRight="8dp"/>
 
         <RadioButton
             android:text="@string/medium_priority"
@@ -72,7 +73,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/rb_medium"
             android:layout_marginTop="16dp"
-            />
+            android:paddingRight="8dp"/>
 
         <RadioButton
             android:text="@string/low_priority"
@@ -81,14 +82,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rb_low"
-            />
+            android:paddingRight="8dp"/>
 
     </RadioGroup>
 
     <Button
         android:text="Create Task"
-        android:fontFamily="monospace"
-        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif"
         android:layout_width="173dp"
         android:layout_height="52dp"
         android:id="@+id/button_save"
