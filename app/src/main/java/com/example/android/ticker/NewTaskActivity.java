@@ -36,6 +36,7 @@ public class NewTaskActivity extends AppCompatActivity {
         mTaskDescription = (EditText) findViewById(R.id.et_enter_task);
 
         mCreateTaskButton = (Button) findViewById(R.id.button_save);
+        mCreateTaskButton.setTransformationMethod(null);
         mCreateTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
