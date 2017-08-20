@@ -14,4 +14,10 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="MyNewTickerTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="colorPrimary">?android:attr/textColorLink</item>
+        <item name="colorPrimaryDark">?android:attr/textColorHighlight</item>
+        <item name="colorAccent">@android:color/holo_green_dark</item>
+    </style>
+
 </resources>
